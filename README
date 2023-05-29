@@ -1,0 +1,71 @@
+**Name: Theodor-Ioan Rolea**
+**Group: 323CA**
+
+# HW2 PA
+
+## Supercomputer
+This problem is solved using two queues to compute the total number of switches required. Initially, I attempted to use only one queue, but the tests kept failing. As a result, I reworked the problem using two queues: one serving dataset 1 and the other serving dataset 2.
+
+The `generateSwitches` function operates as follows:
+- It creates an array of queues to store tasks based on their datasets.
+- The queues are initialized with tasks having a zero in-degree.
+- If there are tasks available in the required dataset queue:
+  - A task is dequeued from the required dataset queue.
+- If there are no tasks available, a context switch is performed:
+  - The number of switches is incremented.
+  - The required dataset is switched by updating the `required_set` variable.
+  - The next iteration is continued.
+- The adjacent tasks of the current task are processed:
+  - If the in-degree becomes zero, the task is enqueued to the appropriate dataset queue.
+  - Otherwise, the in-degree of the task is decremented.
+
+In the main function, the following steps are performed:
+- The dataset for each task is read from the input file.
+- The adjacency lists are built, and the in-degree of nodes is calculated based on the dependencies.
+- A copy of the in-degree vector is created for each dataset.
+- The `generateSwitches` function is called twice, once for each dataset, to calculate the minimum number of switches required.
+
+Time complexity: O(n + m)
+Space complexity: O(n + m)
+
+## Cai ferate
+This problem is solved using Kosaraju's algorithm to determine strongly connected components (SCCs). The algorithm involves two depth-first searches (DFS): one on the original graph and one on the transposed (or reversed) graph. These DFS visits help determine the SCCs, construct a Directed Acyclic Graph (DAG), and calculate the in-degree of each component. The answer is the number of components with an in-degree of 0.
+
+The `DFS` function operates as follows:
+- The type of DFS being performed (original or transposed) is checked.
+- If it is the original DFS, the current node is marked as visited, and its adjacent nodes are processed.
+- If it is the transposed DFS, the current node is marked as visited and added to the current SCC.
+- The adjacent nodes of the current node are recursively processed.
+
+The `getRails` function operates as follows:
+- A DFS is performed to topologically sort the nodes.
+- A second DFS is performed on the transposed graph to determine the SCCs.
+- The DAG is constructed by adding edges between SCCs.
+- The in-degree of each SCC is calculated.
+- The answer is the number of SCCs with an in-degree of 0.
+
+In the main function, the following steps are performed:
+- The adjacency lists for the original and transposed graphs are constructed.
+- The `getRails` function is called to calculate the answer.
+
+Time complexity: O(n + m)
+Space complexity: O(n + m)
+
+## Teleportare
+Unfortunately, I did not have enough time to solve this problem. However, I believe a modified version of Dijkstra's algorithm could be used to solve it.
+
+## Magazin
+This problem is solved using a simple Depth-First Search (DFS) algorithm, similar to the one found in Lab7. The steps are as follows:
+- The time is incremented.
+- The start time of the current node is updated.
+- The current node is added to the DFS order.
+- The position of the current node is set in the DFS order.
+- The
+
+ adjacent nodes of the current node are processed recursively.
+- The end time of the current node is updated.
+
+In the main function, each query is processed by reading values `d` and `e` from the input file. If `e` is less than or equal to `(end_time[d] - start_time[d])`, which essentially represents the length between two nodes, the node at position `d + e` is printed. Otherwise, if there are any errors such as too many steps or unreachable nodes, -1 is printed.
+
+Time complexity: O(n)
+Space complexity: O(n)

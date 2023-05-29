@@ -1,0 +1,10 @@
+./teleportare.cpp:15:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+./teleportare.cpp:23:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+./teleportare.cpp:50:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+./teleportare.cpp:55:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+Done processing ./_utils/verif.cpp
+Done processing ./ferate.cpp
+Done processing ./magazin.cpp
+Done processing ./supercomputer.cpp
+Done processing ./teleportare.cpp
+Total errors found: 4
